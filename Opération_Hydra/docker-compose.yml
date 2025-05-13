@@ -1,0 +1,6 @@
+services:
+  hydra_ctf:
+    build: .
+    ports:
+      - "2222:22"
+    container_name: hydra_ctf
