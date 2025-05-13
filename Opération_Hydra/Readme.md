@@ -26,7 +26,7 @@ Un serveur SSH a été configuré pour permettre l'accès d'un utilisateur malve
 
 1. **Cloner ou télécharger ce repository** :
     ```bash
-    git clone https://github.com/arustat/ctf-
+    https://github.com/Arustat/ctf_community-box/edit/main/Op%C3%A9ration_Hydra
     cd operation_hydra
     ```
 
@@ -37,22 +37,13 @@ Un serveur SSH a été configuré pour permettre l'accès d'un utilisateur malve
 
     Cela va lancer le conteneur en arrière-plan et exposer le port SSH sur `localhost:2222`.
 
-3. **Se connecter au serveur SSH** :
-    Une fois le conteneur en cours d'exécution, vous pouvez vous connecter au serveur SSH avec l'utilisateur `agent_hydra` et le mot de passe `123456`.
-
-    ```bash
-    ssh agent_hydra@localhost -p 2222
-    ```
-
-    Vous serez connecté à un terminal dans le conteneur Docker.
-
 ---
 
 ## Objectif
 
-1. **Accédez au répertoire de l'utilisateur `agent_hydra`**.
+1. **Accédez au répertoire de l'utilisateur **.
 2. **Trouvez le fichier `flag.txt`**.
-3. **Obtenez le flag qui est contenu dans le fichier**. Il ressemble à `FLAG{hYdRa_Acc3ss_Gr@nted}`.
+3. **Obtenez le flag qui est contenu dans le fichier**. 
 
 ---
 
@@ -68,7 +59,7 @@ Un serveur SSH a été configuré pour permettre l'accès d'un utilisateur malve
 
 ## Contributeurs
 
-- [Ton Nom ou ton Pseudo] - Création du challenge
+- Arustat - Création du challenge
 
 ---
 
