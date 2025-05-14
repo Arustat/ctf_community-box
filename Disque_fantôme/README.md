@@ -21,3 +21,15 @@ FLAG{...}
 
 FLAG{...}
 FLAG{...}
+
+
+## Contributeurs
+
+- Arustat - Création du challenge
+
+---
+
+## License
+
+Ce projet est sous la **licence MIT**.
+
