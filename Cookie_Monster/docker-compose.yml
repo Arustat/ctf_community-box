@@ -1,0 +1,9 @@
+services:
+  web:
+    image: php:8.1-apache
+    container_name: cookie_auth_web
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - "8080:80"
+    command: bash -c "a2enmod rewrite && apache2-foreground"
