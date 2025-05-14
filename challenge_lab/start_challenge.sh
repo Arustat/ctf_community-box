@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Arrêter les conteneurs existants s'ils existent
-EXISTING_SERVICES=$(docker ps -q --filter ancestor=skoum/ctf-lab-services)
+EXISTING_SERVICES=$(docker ps -q --filter ancestor=hackconnect/challenge_lab_services)
 if [ ! -z "$EXISTING_SERVICES" ]; then
     docker stop $EXISTING_SERVICES
 fi
 
-EXISTING_KALI=$(docker ps -q --filter ancestor=skoum/ctf-lab-kali)
+EXISTING_KALI=$(docker ps -q --filter ancestor=hackconnect/challenge_lab_kali)
 if [ ! -z "$EXISTING_KALI" ]; then
     docker stop $EXISTING_KALI
 fi
@@ -17,9 +17,9 @@ if ! docker network inspect ctf-network &>/dev/null; then
 fi
 
 # Lancer le conteneur de services CTF
-docker run -d --name ctf-lab-services --network ctf-network --ip 172.20.0.2 -p 80:80 -p 21:21 -p 20:20 -p 21000-21010:21000-21010 -p 22:22 skoum/ctf-lab-services
+docker run -d --name ctf-lab-services --network ctf-network --ip 172.20.0.2 -p 80:80 -p 21:21 -p 20:20 -p 21000-21010:21000-21010 -p 22:22 hackconnect/challenge_lab_services
 
 # Lancer le conteneur Kali
-docker run -d --name ctf-lab-kali --network ctf-network --ip 172.20.0.3 -p 1337:22 --cap-add NET_ADMIN --cap-add SYS_ADMIN skoum/ctf-lab-kali
+docker run -d --name ctf-lab-kali --network ctf-network --ip 172.20.0.3 -p 1337:22 --cap-add NET_ADMIN --cap-add SYS_ADMIN hackconnect/challenge_lab_services
 
 echo "Le challenge a démarré ! La machine Kali est accessible via SSH sur le port 1337. Bonne chance !"
