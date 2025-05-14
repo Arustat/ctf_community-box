@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: ctf-resources
+    ports:
+      - "8080:80"  # Modifier ici le port externe
+    volumes:
+      - ./resources:/usr/share/nginx/html:ro
+    networks:
+      - ctf_network
+
+networks:
+  ctf_network:
+    driver: bridge

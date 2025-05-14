@@ -1,0 +1,5 @@
+# .htaccess - Restriction d'accès à certains fichiers
+<FilesMatch "\.(bin|dmp|zip)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
