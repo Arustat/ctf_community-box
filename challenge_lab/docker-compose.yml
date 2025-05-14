@@ -1,0 +1,43 @@
+services:
+  ctf-services:
+    build:
+      context: .
+      dockerfile: ubuntu.Dockerfile
+    image: skoum/ctf-lab-services:latest
+    container_name: ctf-lab-services
+    ports:
+      - "80:80"     # Web
+      - "21:21"     # FTP command
+      - "20:20"     # FTP data
+      - "21000-21010:21000-21010" # FTP passive
+      - "22:22"     # SSH
+    volumes:
+      - ./public:/var/www/html
+      - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
+    restart: unless-stopped
+    networks:
+      ctf-network:
+        ipv4_address: 172.20.0.2
+
+  kali:
+    build:
+      context: .
+      dockerfile: kali.Dockerfile
+    image: skoum/ctf-lab-kali:latest
+    container_name: ctf-lab-kali
+    ports:
+      - "1337:22"
+    restart: unless-stopped
+    networks:
+      ctf-network:
+        ipv4_address: 172.20.0.3
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+
+networks:
+  ctf-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
